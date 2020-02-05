@@ -145,7 +145,7 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
      *
      * @var string
      */
-    const CREATED_AT = 'created_at';
+    const CREATED_AT = 'data_added';
 
     /**
      * The name of the "updated at" column.
