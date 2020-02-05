@@ -13,8 +13,6 @@
 
 - untuk Edit di Kategori menu setelah memilih data yang akan di edit laravel masih menunjukkan kode 419 | Page Expired, mungkin kedepannya akan saya perbaiki
 
-<p align="center"><img src="https://ibb.co/StFBD9G" width="800"></p>
-
 
 ## License
 
