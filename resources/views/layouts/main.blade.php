@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title></title>
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="icon" type="image/png" href="{{asset('assets/logo.png')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/index.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/awesome/css/font-awesome.min.css')}}">

@@ -43,7 +43,7 @@
 
 				<div class="both"></div>
 			</div>
-			
+			<span class="label">Jumlah Menu : {{ \DB::table('barang')->count()}}</span>
 			<table class="datatable order-table" id="datatable">
 				<thead>
 				<tr>
@@ -67,8 +67,8 @@
 						<td>Rp. {{ $value->harga_jual }}</td>
 						<td>{{ $value->date_added }}</td>
 						<td>
-							<a href="#" class="btn bluetbl m-r-10" onclick="noAv()"><span class="btn-edit-tooltip">Edit</span><i class="fa fa-pencil"></i></a>
-							<a href="#" class="btn redtbl" onclick="noAv()"><span class="btn-hapus-tooltip">Hapus</span><i class="fa fa-trash"></i></a>
+							<a href="{{url('/'.$value->id_barang. '/editMenu')}}" class="btn bluetbl m-r-10" onclick="noAv()"><span class="btn-edit-tooltip">Edit</span><i class="fa fa-pencil"></i></a>
+							<a href="{{url('/'.$value->id_barang. '/deleteMenu')}}" class="btn redtbl"><span class="btn-hapus-tooltip">Hapus</span><i class="fa fa-trash"></i></a>
 						</td>
 					</tr>
 					@endforeach

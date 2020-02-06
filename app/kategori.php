@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class kategori extends Model
 {
+	public $timestamps = false;
     protected $table = 'kategori';
     protected $primaryKey = 'id_kategori';
 

@@ -16,7 +16,6 @@ class crudController extends Controller
 
     public function storeMenu(Request $request){
     	$barang = new barang;
-    	$barang->timestamps=false;
     	$barang->nama_barang = $request->nama_barang;
     	$barang->id_kategori = $request->id_kategori;
     	$barang->stok = $request->stok;
@@ -25,9 +24,31 @@ class crudController extends Controller
     	return redirect('/');
     }
 
+    public function deleteMenu($id_barang){
+        $barang = barang::findOrFail($id_barang);
+        $barang->delete();
+        return redirect('/');
+    }
+
+    public function editMenu($id_barang){
+        $halaman = '/';
+        $barang = barang::findOrFail($id_barang);
+        return view('edit_menu', compact('halaman','barang'));
+    }
+
+    public function updateMenu($id_barang, Request $request){
+        $barang = barang::findOrFail($id_barang);
+        $barang->id_barang = $request->id_barang;
+        $barang->nama_barang = $request->nama_barang;
+        $barang->id_kategori = $request->id_kategori;
+        $barang->stok = $request->stok;
+        $barang->harga_jual = $request->harga_jual;
+        $barang->save();
+        return redirect('/');
+    }
+
     public function storeCat(Request $request){
     	$kategori = new kategori;
-    	$kategori->timestamps = false;
     	$kategori->nama_kategori = $request->nama_kategori;
     	$kategori->save();
     	return redirect('kategori');
@@ -46,7 +67,6 @@ class crudController extends Controller
     }
 
     public function updateCat($id_kategori, Request $request){
-    	$halaman = 'kategori';
     	$kategori = kategori::findOrFail($id_kategori);
     	$kategori->id_kategori = $request->id_kategori;
     	$kategori->nama_kategori = $request->nama_kategori;
