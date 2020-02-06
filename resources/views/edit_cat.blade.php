@@ -12,6 +12,7 @@
 			<div class="padding">
 				<h3 class="jdl">Edit Kategori</h3>
 				<form class="form-input" method="POST" action="{{url('kategori/' .$kategori->id_kategori. '/updateCat')}}">
+					@csrf
 					<input type="text" placeholder="ID Kategori" disabled="disabled" value="ID kategori : {{$kategori->id_kategori}}">
 					<input type="text" name="nama_kategori" placeholder="Nama Barang" required="required" value="{{$kategori->nama_kategori}}">
 					<input type="hidden" name="id_kategori" value="{{$kategori->id_kategori}}">
