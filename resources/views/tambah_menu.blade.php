@@ -6,7 +6,6 @@
 	document.title="Tambah Menu";
 	document.getElementById('barang').classList.add('active');
 </script>
-
 <div class="content">
 	<div class="padding">
 		<div class="bgwhite">

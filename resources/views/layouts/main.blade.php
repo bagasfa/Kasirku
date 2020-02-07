@@ -19,6 +19,7 @@
 		</li>
 		<li><a id="barang" href="/"><i class="fa fa-bars"></i> Menu</a></li>
 		<li><a id="kategori" href="kategori"><i class="fa fa-tags"></i> Kategori Menu</a></li>
+		<li><a id="kasir" href="kasir"><i class="fa fa-user"></i> Kasir</a></li>
 	</ul>
 </div>
 
