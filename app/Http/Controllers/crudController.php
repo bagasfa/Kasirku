@@ -81,7 +81,11 @@ class crudController extends Controller
     }
 
     public function storeKasir(Request $request){
-        
+        request()->validate([
+            'nama_kasir' => 'required',
+            'jenis_kelamin' => 'required',
+            'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048'        
+        ]);
         $foto = $request->file('foto');
         $extension = $foto->getClientOriginalExtension();
         Storage::disk('public')->put($foto->getFilename().'.'.$extension,  File::get($foto));
@@ -109,7 +113,7 @@ class crudController extends Controller
         $this->validate($request,[
            'nama_kasir' => 'required',
             'jenis_kelamin' => 'required',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
         $kasir = kasir::find($id_kasir);
