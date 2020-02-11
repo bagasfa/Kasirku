@@ -15,9 +15,8 @@
 					@csrf
 					<input type="text" name="nama_barang" placeholder="Nama Menu" required="required">
 					<input type="number" name="stok" placeholder="Stok" required="required">
-					<input type="hidden" name="harga_beli" value="0">
 					<input type="number" name="harga_jual" placeholder="Harga Menu" required="required">
-					<select style="width: 372px;cursor: pointer;" required="required" name="kategori">
+					<select style="width: 372px;cursor: pointer;" required="required" name="id_kategori">
 							<option value="">Pilih Kategori :</option>
 						@foreach ($cat as $kategori)
 							<option value="{{$kategori->id_kategori}}"> {{$kategori->nama_kategori}}</option>

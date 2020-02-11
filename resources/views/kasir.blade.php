@@ -23,7 +23,7 @@
 				<tr>
 					<th width="10px">#</th>
 					<th width="300px"><center>Nama Kasir</center></th>
-					<th width="200px"><center>Jenis Kelamin</center></th>
+					<th width="200px"><center>No. Telp</center></th>
 					<th width="100px"><center>Foto</center></th>
 					<th ><center>Tanggal Ditambahkan</center></th>
 					<th width="60px" align="center"><center>Aksi</center></th>
@@ -35,7 +35,7 @@
 					<tr>
 						<td align="center"><?php echo $no++; ?></td>
 						<td>{{ $kasir->nama_kasir }}</td>
-						<td align="center">{{ $kasir->jenis_kelamin }}</td>
+						<td align="center">{{ $kasir->telp }}</td>
 						<td align="center"><img src="{{url('assets/images/'.$kasir->foto)}}" width="100px" height="100px" alt="{{$kasir->foto}}"></td>
 						<td align="center">{{ $kasir->date_added }}</td>
 						<td>
@@ -45,8 +45,10 @@
 					</tr>
 					@endforeach
 			</tbody>
-
 			</table>
+			<br>
+			<div class="pull-right">{{ $cs->links() }}</div>
+			<br><br>
 			</div>
 		</div>
 	</div>

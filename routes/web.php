@@ -19,6 +19,7 @@ Route::get('/stisla', function () {
 // Show Data
 Route::get('/kategori','pagesController@kategori');
 Route::get('/kasir','pagesController@kasir');
+Route::get('/menu/cariMenu','pagesController@cariMenu');
 
 // CRUD Menu
 Route::get('/tambah_menu', 'crudController@tambah_menu');
@@ -38,5 +39,5 @@ Route::get('/tambah_kasir', 'crudController@tambah_kasir');
 Route::post('/kasir', 'crudController@storeKasir');
 Route::get('kasir/{kasir}/deleteKasir', 'crudController@deleteKasir');
 Route::get('kasir/{kasir}/editKasir','crudController@editKasir');
-Route::post('kasir/{kasir}/updateKasir','crudController@updateKasir');
+Route::post('/kasir/{kasir}/updateKasir','crudController@updateKasir');
 ?>

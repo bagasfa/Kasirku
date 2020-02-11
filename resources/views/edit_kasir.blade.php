@@ -11,33 +11,17 @@
 		<div class="bgwhite">
 			<div class="padding">
 				<h3 class="jdl">Edit Kasir</h3>
-				<form class="form-input" method="POST" action="{{url('kasir/' .$kasir->id_kasir. '/updateKasir')}}" enctype="multipart/form-data">
+				<form class="form-input" method="POST" action="{{url('/kasir/' .$kasir->id_kasir. '/updateKasir')}}" enctype="multipart/form-data">
 					{{csrf_field()}}
 					{{$kasir->id_kasir}}
 					<input type="hidden" name="id" value="{{$kasir->id_kasir}}">
 					<input type="text" name="nama_kasir" placeholder="Nama Kasir" required="required" value="{{$kasir->nama_kasir}}">
+					<input type="text" name="telp" placeholder="No. Telpon" required="required" maxlength="12" value="{{$kasir->telp}}">
 					
-					Jenis Kelamin
-					@if($kasir->jenis_kelamin=="L")
-					<label for="jenis_kelamin">
-						<input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="L" checked="">Laki - Laki
-					</label>
-					<label for="jenis_kelamin">
-						<input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="P">Perempuan
-					</label>
-					
-					@elseif($kasir->jenis_kelamin=="P")
-					<label for="jenis_kelamin">
-						<input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="L">Laki - Laki
-					</label>
-					<label for="jenis_kelamin">
-						<input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="P" checked="">Perempuan
-					</label>
-					@endif
 					&nbsp;
 					
-					<input type="file" name="fotoUp" id="fotoUp"/>
 					<img src="{{url('assets/images/'.$kasir->foto)}}" width="100px" height="100px" alt="{{$kasir->foto}}">
+					<input type="file" name="fotoUp" id="fotoUp"/>
 
 					<br><br>
 					<button class="btnblue" type="submit"><i class="fa fa-save"></i> Simpan</button>

@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
--- https://www.phpmyadmin.net/
+-- version 4.4.14
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Feb 2020 pada 12.09
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.3
+-- Generation Time: 08 Mei 2019 pada 17.39
+-- Versi Server: 5.6.26
+-- PHP Version: 5.6.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,87 +26,51 @@ SET time_zone = "+00:00";
 -- Struktur dari tabel `barang`
 --
 
-CREATE TABLE `barang` (
+CREATE TABLE IF NOT EXISTS `barang` (
   `id_barang` int(11) NOT NULL,
   `nama_barang` varchar(100) NOT NULL,
   `id_kategori` int(11) NOT NULL,
   `stok` int(11) NOT NULL,
+  `harga_beli` varchar(100) NOT NULL,
   `harga_jual` varchar(100) NOT NULL,
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama_barang`, `id_kategori`, `stok`, `harga_jual`, `date_added`) VALUES
-(14, 'Kopi Espresso', 24, 92, '13000', '2019-05-08 15:33:58'),
-(15, 'Kopi Luwak Original', 24, 15, '100000', '2019-05-08 14:46:12'),
-(16, 'Kopi Asri', 24, 93, '10000', '2019-05-08 14:47:19'),
-(17, 'Kopi Arabica', 24, 40, '14000', '2019-05-07 11:49:29'),
-(18, 'Kopi Torabika Cappucino', 24, 195, '5000', '2019-05-08 14:45:11'),
-(19, 'Kopi Robusta', 24, 48, '13000', '2019-05-08 14:44:15'),
-(20, 'Americano Coffe', 24, 29, '15000', '2019-05-08 14:44:50'),
-(21, 'Kopi Liberika', 24, 39, '10000', '2019-05-08 04:28:09'),
-(22, 'Kopi Ekselsa', 24, 50, '12000', '2019-05-07 11:53:05'),
-(23, 'Taro Milk', 24, 93, '10000', '2019-05-08 14:46:19'),
-(24, 'Green Tea', 24, 95, '10000', '2019-05-08 14:47:32'),
-(25, 'Strawberry Milk', 24, 93, '10000', '2019-05-08 14:47:26'),
-(26, 'Mie Sedap All Variant', 14, 199, '6000', '2019-05-08 14:41:12'),
-(27, 'Indomie All Standart Variant', 14, 195, '7000', '2019-05-08 14:47:04'),
-(28, 'Spicy Wings Ala Carte (4Pcs)', 14, 14, '15000', '2019-05-08 14:42:39'),
-(29, 'Spicy Wings + Rice', 14, 11, '13000', '2019-05-08 14:42:03'),
-(30, 'Nasi Goreng Standart Edition', 14, 20, '10000', '2019-05-08 14:27:59'),
-(31, 'Nasi Goreng Epic Edition', 14, 19, '13000', '2019-05-08 14:48:38'),
-(32, 'Nasi Goreng Legendary Edition', 14, 9, '20000', '2019-05-08 14:48:45'),
-(33, 'Dadar Gulung Thanos Color', 17, 18, '5000', '2019-05-08 14:48:52'),
-(34, 'Mochi Local Pride', 17, 18, '5000', '2019-05-08 14:46:05'),
-(35, 'Pudding Anti Missqueen', 17, 20, '4000', '2019-05-08 14:31:53'),
-(36, 'Bubur Ketan Black', 17, 20, '7000', '2019-05-08 14:32:34'),
-(37, 'Kacang HypeAbis', 16, 47, '2000', '2019-05-08 14:47:49'),
-(38, 'Tella Crispy', 16, 20, '3000', '2019-05-08 14:33:34'),
-(39, 'Keripik Bubur Tapi Boong', 16, 19, '4000', '2019-05-08 14:47:55'),
-(40, 'Keripik Hulk', 16, 19, '3000', '2019-05-08 14:48:32'),
-(41, 'Infinity Crackers', 16, 19, '4000', '2019-05-08 14:48:01'),
-(42, 'Kopi Tubruk', 24, 98, '12000', '2019-05-08 14:48:24');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `failed_jobs`
---
-
-CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `connection` text COLLATE utf8_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `kasir`
---
-
-CREATE TABLE `kasir` (
-  `id_kasir` int(11) NOT NULL,
-  `nama_kasir` varchar(100) NOT NULL,
-  `jenis_kelamin` enum('L','P') NOT NULL,
-  `foto` varchar(200) NOT NULL,
-  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `kasir`
---
-
-INSERT INTO `kasir` (`id_kasir`, `nama_kasir`, `jenis_kelamin`, `foto`, `date_added`) VALUES
-(1, 'Nopal Fakhrian', 'L', 'nopal.jpg', '2020-02-06 15:18:43'),
-(4, 'Boi', 'P', 'php8ACD.tmp.png', '2020-02-06 17:11:00'),
-(5, 'Billy', 'L', 'php2BA4.tmp.png', '2020-02-07 07:41:08');
+INSERT INTO `barang` (`id_barang`, `nama_barang`, `id_kategori`, `stok`, `harga_beli`, `harga_jual`, `date_added`) VALUES
+(14, 'Kopi Espresso', 24, 92, '0', '13000', '2019-05-08 15:33:58'),
+(15, 'Kopi Luwak Original', 24, 15, '0', '100000', '2019-05-08 14:46:12'),
+(16, 'Kopi Asri', 24, 93, '0', '10000', '2019-05-08 14:47:19'),
+(17, 'Kopi Arabica', 24, 40, '0', '14000', '2019-05-07 11:49:29'),
+(18, 'Kopi Torabika Cappucino', 24, 195, '0', '5000', '2019-05-08 14:45:11'),
+(19, 'Kopi Robusta', 24, 48, '0', '13000', '2019-05-08 14:44:15'),
+(20, 'Americano Coffe', 24, 29, '0', '15000', '2019-05-08 14:44:50'),
+(21, 'Kopi Liberika', 24, 39, '0', '10000', '2019-05-08 04:28:09'),
+(22, 'Kopi Ekselsa', 24, 50, '0', '12000', '2019-05-07 11:53:05'),
+(23, 'Taro Milk', 24, 93, '0', '10000', '2019-05-08 14:46:19'),
+(24, 'Green Tea', 24, 95, '0', '10000', '2019-05-08 14:47:32'),
+(25, 'Strawberry Milk', 24, 93, '0', '10000', '2019-05-08 14:47:26'),
+(26, 'Mie Sedap All Variant', 14, 199, '0', '6000', '2019-05-08 14:41:12'),
+(27, 'Indomie All Standart Variant', 14, 195, '0', '7000', '2019-05-08 14:47:04'),
+(28, 'Spicy Wings Ala Carte (4Pcs)', 14, 14, '0', '15000', '2019-05-08 14:42:39'),
+(29, 'Spicy Wings + Rice', 14, 11, '0', '13000', '2019-05-08 14:42:03'),
+(30, 'Nasi Goreng Standart Edition', 14, 20, '0', '10000', '2019-05-08 14:27:59'),
+(31, 'Nasi Goreng Epic Edition', 14, 19, '0', '13000', '2019-05-08 14:48:38'),
+(32, 'Nasi Goreng Legendary Edition', 14, 9, '0', '20000', '2019-05-08 14:48:45'),
+(33, 'Dadar Gulung Thanos Color', 17, 18, '0', '5000', '2019-05-08 14:48:52'),
+(34, 'Mochi Local Pride', 17, 18, '0', '5000', '2019-05-08 14:46:05'),
+(35, 'Pudding Anti Missqueen', 17, 20, '0', '4000', '2019-05-08 14:31:53'),
+(36, 'Bubur Ketan Black', 17, 20, '0', '7000', '2019-05-08 14:32:34'),
+(37, 'Kacang HypeAbis', 16, 47, '0', '2000', '2019-05-08 14:47:49'),
+(38, 'Tella Crispy', 16, 20, '0', '3000', '2019-05-08 14:33:34'),
+(39, 'Keripik Bubur Tapi Boong', 16, 19, '0', '4000', '2019-05-08 14:47:55'),
+(40, 'Keripik Hulk', 16, 19, '0', '3000', '2019-05-08 14:48:32'),
+(41, 'Infinity Crackers', 16, 19, '0', '4000', '2019-05-08 14:48:01'),
+(42, 'Kopi Tubruk', 24, 98, '0', '12000', '2019-05-08 14:48:24'),
+(43, 'Thai Tea Milk++', 24, 94, '0', '15000', '2019-05-08 14:42:52');
 
 -- --------------------------------------------------------
 
@@ -116,10 +78,10 @@ INSERT INTO `kasir` (`id_kasir`, `nama_kasir`, `jenis_kelamin`, `foto`, `date_ad
 -- Struktur dari tabel `kategori`
 --
 
-CREATE TABLE `kategori` (
+CREATE TABLE IF NOT EXISTS `kategori` (
   `id_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `kategori`
@@ -129,41 +91,7 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 (14, 'Makanan'),
 (16, 'Snack'),
 (17, 'Dessert'),
-(24, 'Minuman'),
-(28, 'Beer');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `migrations`
---
-
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data untuk tabel `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `password_resets`
---
-
-CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+(24, 'Minuman');
 
 -- --------------------------------------------------------
 
@@ -171,14 +99,14 @@ CREATE TABLE `password_resets` (
 -- Struktur dari tabel `sub_transaksi`
 --
 
-CREATE TABLE `sub_transaksi` (
+CREATE TABLE IF NOT EXISTS `sub_transaksi` (
   `id_subtransaksi` int(11) NOT NULL,
   `id_barang` int(11) NOT NULL,
   `id_transaksi` int(11) NOT NULL,
   `jumlah_beli` int(11) NOT NULL,
   `total_harga` varchar(20) NOT NULL,
   `no_invoice` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `sub_transaksi`
@@ -199,9 +127,11 @@ INSERT INTO `sub_transaksi` (`id_subtransaksi`, `id_barang`, `id_transaksi`, `ju
 (34, 23, 21, 2, '20000', '08/AF/4/19/04/23/06'),
 (35, 26, 22, 1, '6000', '08/AF/6/19/04/41/42'),
 (36, 24, 22, 2, '20000', '08/AF/6/19/04/41/42'),
+(37, 43, 22, 3, '45000', '08/AF/6/19/04/41/42'),
 (38, 25, 23, 4, '40000', '08/AF/6/19/04/42/17'),
 (39, 29, 23, 4, '52000', '08/AF/6/19/04/42/17'),
 (40, 28, 24, 1, '15000', '08/AF/6/19/04/43/00'),
+(41, 43, 24, 3, '45000', '08/AF/6/19/04/43/00'),
 (42, 14, 25, 1, '13000', '08/AF/6/19/04/43/27'),
 (43, 14, 26, 1, '13000', '08/AF/5/19/04/44/59'),
 (44, 16, 26, 1, '10000', '08/AF/5/19/04/44/59'),
@@ -234,13 +164,13 @@ INSERT INTO `sub_transaksi` (`id_subtransaksi`, `id_barang`, `id_transaksi`, `ju
 -- Struktur dari tabel `tempo`
 --
 
-CREATE TABLE `tempo` (
+CREATE TABLE IF NOT EXISTS `tempo` (
   `id_subtransaksi` int(11) NOT NULL,
   `id_barang` int(11) NOT NULL,
   `jumlah_beli` int(11) NOT NULL,
   `total_harga` varchar(20) NOT NULL,
   `trx` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -248,14 +178,14 @@ CREATE TABLE `tempo` (
 -- Struktur dari tabel `transaksi`
 --
 
-CREATE TABLE `transaksi` (
+CREATE TABLE IF NOT EXISTS `transaksi` (
   `id_transaksi` int(11) NOT NULL,
   `tgl_transaksi` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `kode_kasir` int(11) NOT NULL,
   `total_bayar` varchar(20) NOT NULL,
   `no_invoice` varchar(20) NOT NULL,
   `nama_pembeli` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `transaksi`
@@ -283,13 +213,13 @@ INSERT INTO `transaksi` (`id_transaksi`, `tgl_transaksi`, `kode_kasir`, `total_b
 -- Struktur dari tabel `user`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` text NOT NULL,
   `status` int(11) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `user`
@@ -304,66 +234,25 @@ INSERT INTO `user` (`id`, `username`, `password`, `status`, `date_created`) VALU
 (6, 'msvbolly', '9444b1b8a7b993209d2b5c77f826876abf05e9c1', 2, '2019-05-08 14:39:41'),
 (7, 'baharsky', 'd685749be867261597cc2a69af830e44768c1946', 2, '2019-05-08 14:40:33');
 
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `users`
---
-
-CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `barang`
+-- Indexes for table `barang`
 --
 ALTER TABLE `barang`
   ADD PRIMARY KEY (`id_barang`),
   ADD KEY `id_kategori` (`id_kategori`);
 
 --
--- Indeks untuk tabel `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `kasir`
---
-ALTER TABLE `kasir`
-  ADD PRIMARY KEY (`id_kasir`);
-
---
--- Indeks untuk tabel `kategori`
+-- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indeks untuk tabel `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
-
---
--- Indeks untuk tabel `sub_transaksi`
+-- Indexes for table `sub_transaksi`
 --
 ALTER TABLE `sub_transaksi`
   ADD PRIMARY KEY (`id_subtransaksi`),
@@ -371,96 +260,59 @@ ALTER TABLE `sub_transaksi`
   ADD KEY `id_transaksi` (`id_transaksi`);
 
 --
--- Indeks untuk tabel `tempo`
+-- Indexes for table `tempo`
 --
 ALTER TABLE `tempo`
   ADD PRIMARY KEY (`id_subtransaksi`),
   ADD KEY `id_barang` (`id_barang`);
 
 --
--- Indeks untuk tabel `transaksi`
+-- Indexes for table `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_transaksi`),
   ADD KEY `kode_kasir` (`kode_kasir`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
-
---
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `barang`
+-- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
 --
--- AUTO_INCREMENT untuk tabel `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `kasir`
---
-ALTER TABLE `kasir`
-  MODIFY `id_kasir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT untuk tabel `kategori`
+-- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
--- AUTO_INCREMENT untuk tabel `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT untuk tabel `sub_transaksi`
+-- AUTO_INCREMENT for table `sub_transaksi`
 --
 ALTER TABLE `sub_transaksi`
-  MODIFY `id_subtransaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
-
+  MODIFY `id_subtransaksi` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=67;
 --
--- AUTO_INCREMENT untuk tabel `tempo`
+-- AUTO_INCREMENT for table `tempo`
 --
 ALTER TABLE `tempo`
-  MODIFY `id_subtransaksi` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `id_subtransaksi` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
 --
--- AUTO_INCREMENT untuk tabel `transaksi`
+-- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT untuk tabel `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
@@ -489,7 +341,6 @@ ALTER TABLE `tempo`
 --
 ALTER TABLE `transaksi`
   ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`kode_kasir`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

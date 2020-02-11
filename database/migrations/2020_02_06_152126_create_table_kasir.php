@@ -16,7 +16,7 @@ class CreateTableKasir extends Migration
         Schema::create('kasir', function (Blueprint $table) {
             $table->bigIncrements('id_kasir');
             $table->string('nama_kasir');
-            $table->enum('jenis_kelamin', ['L','P']);
+            $table->string('telp');
             $table->string('foto');
             $table->timestamp('date_added');
         });

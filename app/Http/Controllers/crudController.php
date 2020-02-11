@@ -83,7 +83,7 @@ class crudController extends Controller
     public function storeKasir(Request $request){
         request()->validate([
             'nama_kasir' => 'required',
-            'jenis_kelamin' => 'required',
+            'telp' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048'        
         ]);
         $foto = $request->file('foto');
@@ -92,13 +92,15 @@ class crudController extends Controller
 
         $kasir = new kasir;
         $kasir->nama_kasir = $request->nama_kasir;
-        $kasir->jenis_kelamin = $request->jenis_kelamin;
+        $kasir->telp = $request->telp;
         $kasir->foto = $foto->getFilename().'.'.$extension;
         $kasir->save();
         return redirect('/kasir');
     }
 
     public function deleteKasir($id_kasir){
+        $gambar = kasir::where('id_kasir', $id_kasir)->first();
+        File::delete('assets/images/'.$gambar->foto);
         $kasir = kasir::findOrFail($id_kasir);
         $kasir->delete();
         return redirect('/kasir');
@@ -112,7 +114,7 @@ class crudController extends Controller
     public function updateKasir($id_kasir, Request $request){
         $this->validate($request,[
            'nama_kasir' => 'required',
-            'jenis_kelamin' => 'required',
+            'telp' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
@@ -129,9 +131,8 @@ class crudController extends Controller
         $files->move($destinationPath, $profileImage);
         $insert['foto'] = "$profileImage";
 
-
         $kasir->nama_kasir = $request->nama_kasir;
-        $kasir->jenis_kelamin = $request->jenis_kelamin;
+        $kasir->telp = $request->telp;
         $kasir->foto = $insert['foto'] = "$profileImage";
         }
         $kasir->save();

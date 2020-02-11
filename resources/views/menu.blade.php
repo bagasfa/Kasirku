@@ -38,9 +38,18 @@
 			<div class="contenttop">
 				<div class="left">
 				<a href="{{url('tambah_menu')}}" class="btnblue"><i class="fa fa-plus"></i> Tambah Menu</a>&nbsp;&nbsp;
-				<form style="float: right;"><input type="search" class="light-table-filter" data-table="order-table"><button>Search Menu</button></form>
+				<!-- Search JS -->
+				<form style="float: right;"><input type="search" class="light-table-filter" placeholder="pake JS" data-table="order-table"><button>Search Menu</button></form>
 				</div>
-
+				<!-- Search Metode Laravel -->
+				<div class="pull-right">
+				<form action="menu/cariMenu" method="GET">
+    			<div class="form-inline my-2 my-lg-0">
+      				<input class="form-control mr-sm-2" type="search" placeholder="Cari disini ..." name="cariMenu" aria-label="Search">
+      				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      			</div>
+    			</form>
+    			</div>
 				<div class="both"></div>
 			</div>
 			<span class="label">Jumlah Menu : {{ \DB::table('barang')->count()}}</span>
@@ -73,8 +82,10 @@
 					</tr>
 					@endforeach
 			</tbody>
-
 			</table>
+			<br>
+			<div class="pull-right">{{ $items->links() }}</div>
+			<br><br>
 			</div>
 		</div>
 	</div>

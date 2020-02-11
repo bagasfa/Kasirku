@@ -11,5 +11,5 @@ class kasir extends Model
     protected $primaryKey = 'id_kasir';
 
     protected $fillable = [
-    	'nama_kasir','jenis_kelamin','foto','date_added'];
+    	'nama_kasir','telp','foto','date_added'];
 }

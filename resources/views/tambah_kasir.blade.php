@@ -13,13 +13,9 @@
 				<form class="form-input" method="POST" action="{{url('kasir')}}" enctype="multipart/form-data">
 					{{csrf_field()}}
 					<input type="text" name="nama_kasir" placeholder="Nama Kasir" required="required">
-					Jenis Kelamin
-					<label for="jenis_kelamin">
-						<input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="L" checked="">Laki - Laki
-					</label>
-					<label for="jenis_kelamin">
-						<input type="radio" name="jenis_kelamin" id="jenis_kelamin" value="P">Perempuan
-					</label>
+
+					<input type="text" name="telp" placeholder="No. Telpon" required="required" maxlength="12">
+
 					<input type="file" name="foto" id="foto">
 
 					<button class="btnblue" type="submit"><i class="fa fa-save"></i> Simpan</button>

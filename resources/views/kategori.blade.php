@@ -17,6 +17,7 @@
 						<button style="background: #41b3f9;color: #fff;border-radius: 3px;border-color: #41b3f9;border:1px solid #41b3f9" type="submit">Tambahkan</button>
 					</form>
 				</div>
+
 				<div class="both"></div>
 			</div>
 			<span class="label">Jumlah Kategori : {{ \DB::table('kategori')->count()}}</span>
@@ -41,8 +42,10 @@
 					</tr>
 					@endforeach
 			</tbody>
-
 			</table>
+			<br>
+			<div class="pull-right">{{ $cat->links() }}</div>
+			<br><br>
 			</div>
 		</div>
 	</div>
