@@ -9,9 +9,7 @@
 
 ## Catatan
 
- - Untuk CRUD bisa dilakukan di Kategori Menu, untuk CRUD Menu masih terkendala value null dari id_kategori yang mengambil dari tabel    Kategori_Menu. 
-
-- untuk Edit di Kategori menu setelah memilih data yang akan di edit laravel masih menunjukkan kode 419 | Page Expired, mungkin kedepannya akan saya perbaiki
+- Untuk edit Images masih terkendala, tetapi insert dan delete sudah berjalan normal
 
 
 ## License
