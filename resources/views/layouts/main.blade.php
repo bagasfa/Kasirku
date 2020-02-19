@@ -17,8 +17,19 @@
 		<li class="admin-info">
 			<img src="{{asset('assets/logo.jpg')}}">
 		</li>
-		<li><a id="barang" href="/"><i class="fa fa-bars"></i> Menu</a></li>
+		<li><a id="dash" href="dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
+		<li><a id="barang" href="menu"><i class="fa fa-bars"></i> Menu</a></li>
 		<li><a id="kategori" href="kategori"><i class="fa fa-tags"></i> Kategori Menu</a></li>
+		<li><a id="kasir" href="kasir"><i class="fa fa-user"></i> Kasir</a></li>
+	</ul>
+</div>
+<div class="nav" style="background: #edf1f5;">
+	<ul>
+		<li><a href=""><i class="fa fa-user" style="color: black;"></i>&nbsp; <span style="color: black;">Hai, {{auth()->user()->name}}</span></a>
+		<ul>
+			<li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+		</ul>
+		</li>
 	</ul>
 </div>
 

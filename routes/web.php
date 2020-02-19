@@ -11,26 +11,41 @@
 |
 */
 // Homepage
-Route::get('/','pagesController@menu');
+Route::get('/', 'AuthController@login')->name('login');
+Route::get('/dashboard','pagesController@dashboard')->middleware('auth');
 Route::get('/stisla', function () {
     return view('stisla.index');
 });
 
-// Show Data
-Route::get('/kategori','pagesController@kategori');
+//Authentication
+Route::post('/postLogin','AuthController@postLogin');
+Route::get('/logout','AuthController@logout');
 
-// CRUD Menu
-Route::get('/tambah_menu', 'crudController@tambah_menu');
-Route::post('/', 'crudController@storeMenu');
-Route::get('/{barang}/deleteMenu', 'crudController@deleteMenu');
-Route::get('/{barang}/editMenu','crudController@editMenu');
-Route::post('/{barang}/updateMenu','crudController@updateMenu');
+Route::group(['middleware' => 'auth'], function(){
+	// Show Data
+	Route::get('/menu','pagesController@menu');
+	Route::get('/kategori','pagesController@kategori');
+	Route::get('/kasir','pagesController@kasir');
+	Route::get('/menu/cariMenu','pagesController@cariMenu');
 
+	// CRUD Menu
+	Route::post('/menu', 'crudController@storeMenu');
+	Route::get('/menu/tambah_menu', 'crudController@tambah_menu');
+	Route::get('/menu/{barang}/deleteMenu', 'crudController@deleteMenu');
+	Route::get('/menu/{barang}/editMenu','crudController@editMenu');
+	Route::post('/menu/{barang}/updateMenu','crudController@updateMenu');
 
-// CRUD kategori
-Route::post('kategori', 'crudController@storeCat');
-Route::get('kategori/{kategori}/deleteCat', 'crudController@deleteCat');
-Route::get('kategori/{kategori}/editCat','crudController@editCat');
-Route::post('kategori/{kategori}/updateCat','crudController@updateCat');
+	// CRUD kategori
+	Route::post('/kategori', 'crudController@storeCat');
+	Route::get('/kategori/{kategori}/deleteCat', 'crudController@deleteCat');
+	Route::get('/kategori/{kategori}/editCat','crudController@editCat');
+	Route::post('/kategori/{kategori}/updateCat','crudController@updateCat');
 
+	// CRUD Kasir
+	Route::get('/kasir/tambah_kasir', 'crudController@tambah_kasir');
+	Route::post('/kasir', 'crudController@storeKasir');
+	Route::get('/kasir/{kasir}/deleteKasir', 'crudController@deleteKasir');
+	Route::get('/kasir/{kasir}/editKasir','crudController@editKasir');
+	Route::post('/kasir/{kasir}/updateKasir','crudController@updateKasir');
+});
 ?>

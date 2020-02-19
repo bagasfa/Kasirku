@@ -11,7 +11,7 @@
 		<div class="bgwhite">
 			<div class="padding">
 				<h3 class="jdl">Tambah Menu</h3>
-				<form class="form-input" method="POST" action="{{url('/')}}">
+				<form class="form-input" method="POST" action="{{url('/menu')}}">
 					@csrf
 					<input type="text" name="nama_barang" placeholder="Nama Menu" required="required">
 					<input type="number" name="stok" placeholder="Stok" required="required">
@@ -23,7 +23,7 @@
 						@endforeach
 					</select>
 					<button class="btnblue" type="submit"><i class="fa fa-save"></i> Simpan</button>
-					<a href="/" class="btnblue" style="background: #f33155"><i class="fa fa-close"></i> Batal</a>
+					<a href="/menu" class="btnblue" style="background: #f33155"><i class="fa fa-close"></i> Batal</a>
 				</form>
 			</div>
 		</div>

@@ -18,29 +18,41 @@
 					</form>
 				</div>
 
+				<!-- Search Metode Laravel -->
+				<div class="pull-right">
+				<form method="GET">
+    			<div class="form-inline my-2 my-lg-0">
+      				<input type="text" name="search" class="form-control" placeholder="Cari disini ..." value="{{ request()->get('search') }}">
+      				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
+      			</div>
+    			</form>
+    			</div>
 				<div class="both"></div>
 			</div>
 			<span class="label">Jumlah Kategori : {{ \DB::table('kategori')->count()}}</span>
 			<table class="datatable" style="width: 500px;">
 				<thead>
 				<tr>
-					<th width="35px">NO</th>
+					<th width="35px">#</th>
 					<th>Nama Kategori</th>
 					<th width="60px">Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
-					<?php $no = 1; ?>
-					@foreach($cat as $value)
+					@forelse($cat as $key => $value)
 					<tr>
-						<td><?php echo $no++; ?></td>
+						<td>{{ $cat->firstItem() + $key }}</td>
 						<td>{{ $value->nama_kategori }}</td>
 						<td>
 							<a href="{{url('kategori/' .$value->id_kategori. '/editCat')}}" class="btn bluetbl m-r-10"><span class="btn-edit-tooltip">Edit</span><i class="fa fa-pencil"></i></a>
 							<a href="{{ url('kategori/' .$value->id_kategori. '/deleteCat')}}" class="btn redtbl"><span class="btn-hapus-tooltip">Hapus</span><i class="fa fa-trash"></i></a>
 						</td>
 					</tr>
-					@endforeach
+					@empty
+					<tr>
+						<td colspan="3">Data Kosong.</td>
+					</tr>
+					@endforelse
 			</tbody>
 			</table>
 			<br>
