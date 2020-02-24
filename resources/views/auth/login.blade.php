@@ -59,7 +59,11 @@
 				<h1>LOGIN PAGE</h1>
 				<form id="loginapp" action="/postLogin" method="POST">
 					{{csrf_field()}}
+<<<<<<< Updated upstream
 					<input type="email" name="email" placeholder="Masukkan E-Mail" required="">
+=======
+					<input type="text" name="username" placeholder="Masukkan Username" required="">
+>>>>>>> Stashed changes
 					<input type="password" name="password" placeholder="Masukkan Password" required=""><br><br><br>
 					<button type="submit"><i class="fa fa-sign-in"></i> Login</button>
 					<div class="both"></div>

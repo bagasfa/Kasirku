@@ -9,6 +9,10 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     public $timestamps = false;
+<<<<<<< Updated upstream
+=======
+    protected $table = 'user';
+>>>>>>> Stashed changes
     use Notifiable;
 
     /**
@@ -17,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'password', 'status'
     ];
 
     /**
