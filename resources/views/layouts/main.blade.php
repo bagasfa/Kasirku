@@ -17,15 +17,23 @@
 		<li class="admin-info">
 			<img src="{{asset('assets/logo.jpg')}}">
 		</li>
+		<!-- Admin -->
+		@if(auth()->user()->status == 1)
 		<li><a id="dash" href="dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
 		<li><a id="barang" href="menu"><i class="fa fa-bars"></i> Menu</a></li>
 		<li><a id="kategori" href="kategori"><i class="fa fa-tags"></i> Kategori Menu</a></li>
 		<li><a id="kasir" href="kasir"><i class="fa fa-user"></i> Kasir</a></li>
+
+		<!-- Kasir -->
+		@elseif(auth()->user()->status == 2)
+		<li><a id="dash" href="dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
+		<li><a id="transaksi" href="/transaksi"><i class="fa fa-money"></i> Transaksi</a></li>
+		@endif
 	</ul>
 </div>
 <div class="nav" style="background: #edf1f5;">
 	<ul>
-		<li><a href=""><i class="fa fa-user" style="color: black;"></i>&nbsp; <span style="color: black;">Hai, {{auth()->user()->name}}</span></a>
+		<li><a href=""><i class="fa fa-user" style="color: black;"></i>&nbsp; <span style="color: black;">Hai, {{auth()->user()->username}}</span></a>
 		<ul>
 			<li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
 		</ul>

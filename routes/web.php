@@ -12,16 +12,16 @@
 */
 // Homepage
 Route::get('/', 'AuthController@login')->name('login');
-Route::get('/dashboard','pagesController@dashboard')->middleware('auth');
 Route::get('/stisla', function () {
     return view('stisla.index');
 });
 
 //Authentication
 Route::post('/postLogin','AuthController@postLogin');
+Route::post('/register','AuthController@register');
 Route::get('/logout','AuthController@logout');
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => ['auth','checkStatus:1']], function(){
 	// Show Data
 	Route::get('/menu','pagesController@menu');
 	Route::get('/kategori','pagesController@kategori');
@@ -47,5 +47,10 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/kasir/{kasir}/deleteKasir', 'crudController@deleteKasir');
 	Route::get('/kasir/{kasir}/editKasir','crudController@editKasir');
 	Route::post('/kasir/{kasir}/updateKasir','crudController@updateKasir');
+});
+
+Route::group(['middleware' => ['auth','checkStatus:1,2']], function(){
+	Route::get('/dashboard','pagesController@dashboard');
+	Route::get('/transaksi','pagesController@transaksi');
 });
 ?>

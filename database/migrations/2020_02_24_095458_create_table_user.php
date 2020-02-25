@@ -29,6 +29,6 @@ class CreateTableUser extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_user');
+        Schema::dropIfExists('user');
     }
 }
