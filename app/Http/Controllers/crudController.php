@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\barang;
+use App\Transaksi;
 use App\kategori;
 use App\kasir;
 use DB;
@@ -127,5 +128,20 @@ class crudController extends Controller
         $kasir->save();
         
         return redirect('/kasir');
+    }
+
+    public function tambah_transaksi(){
+        $barang = barang::all();
+        return view('Transaksi.transaksi_baru', compact('barang'));
+    }
+
+    public function storeTransaksi(Request $request){
+        $barang = new barang;
+        $barang->nama_barang = $request->nama_barang;
+        $barang->id_kategori = $request->id_kategori;
+        $barang->stok = $request->stok;
+        $barang->harga_jual = $request->harga_jual;
+        $barang->save();
+        return redirect('/menu');
     }
 }

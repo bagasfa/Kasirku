@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exports\MenuExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\barang;
 use App\Transaksi;
 use App\kategori;
 use App\kasir;
 use DB;
+use PDF;
 
 class pagesController extends Controller
 {
@@ -46,5 +49,16 @@ class pagesController extends Controller
             $query->where('nama_kasir', 'LIKE', '%'.$request->search.'%');
         })->paginate(10);
         return view('Kasir.kasir')->with('cs',$kasir);
+    }
+
+    public function menuExcel(){
+        return Excel::download(new MenuExport, 'menu.xlsx');
+    }
+
+    public function menuPdf(){
+        $barang = barang::all();
+
+        $pdf = PDF::loadview('Menu.menu_pdf',['barang'=>$barang]);
+        return $pdf->download('laporan-menu.pdf');
     }
 }

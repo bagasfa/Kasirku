@@ -1,3 +1,6 @@
+@extends('layouts.main')
+
+@section('content')
 <script type="text/javascript">
 	document.title="Transaksi Baru";
 	document.getElementById('transaksi').classList.add('active');
@@ -18,15 +21,11 @@
 		<div class="bgwhite">
 			<div class="padding">
 				<h3 class="jdl">Entry  Transaksi Baru</h3>
-				<form class="form-input" method="post" action="handler.php?action=tambah_tempo" style="padding-top: 30px;">
+				<form class="form-input" method="post" action="/tambah_transaksi" style="padding-top: 30px;">
+					@csrf
 					<label>Pilih Menu : </label>
 					<select style="width: 372px;cursor: pointer;" required="required" name="id_barang">
-						<?php
-						$data=$root->con->query("select * from barang");
-						while ($f=$data->fetch_assoc()) {
-							echo "<option value='$f[id_barang]'>$f[nama_barang] (stock : $f[stok] | Harga : ".number_format($f['harga_jual']).")</option>";
-						}
-						?>
+							<option value="$f[id_barang]'></option>
 					</select>
 					<label>Jumlah Beli :</label>
 					<input required="required" type="number" min="1" name="jumlah">
@@ -97,3 +96,4 @@
 
 	</div>
 </div>
+@stop

@@ -47,6 +47,11 @@
     			</form>
 				</div>
 			
+				<div class="right">
+					<a href="/menu/menu_ex" class="btngreen"><i class="fa fa-print"></i> Export XLS</a>
+					<a href="/menu/menu_pdf" class="btnred"><i class="fa fa-print"></i> Export PDF</a>
+				</div>
+
 				<div class="both"></div>
 			</div>
 			<span class="label">Jumlah Menu : {{ \DB::table('barang')->count()}}</span>

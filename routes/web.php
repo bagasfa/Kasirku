@@ -22,6 +22,10 @@ Route::post('/register','AuthController@register');
 Route::get('/logout','AuthController@logout');
 
 Route::group(['middleware' => ['auth','checkStatus:1']], function(){
+	// Export Data
+	Route::get('/menu/menu_ex','pagesController@menuExcel');
+	Route::get('/menu/menu_pdf','pagesController@menuPdf');
+
 	// Show Data
 	Route::get('/menu','pagesController@menu');
 	Route::get('/kategori','pagesController@kategori');

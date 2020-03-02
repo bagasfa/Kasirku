@@ -12,7 +12,7 @@
 			<div class="padding">
 			<div class="contenttop">
 				<div class="left">
-					<a href="transaksi_baru" class="btnblue">Transaksi Baru</a>&nbsp;&nbsp;
+					<a href="/transaksi_baru" class="btnblue">Transaksi Baru</a>&nbsp;&nbsp;
 					<form method="GET" style="float: right;">
     					<div class="form-inline my-2 my-lg-0">
       						<input type="text" name="search" class="form-control" placeholder="Cari disini ..." value="{{ request()->get('search') }}">
@@ -39,7 +39,7 @@
 					<tr>
 						<td>{{ $transaksi->firstItem() + $key }}</td>
 						<td>{{ $trx->tgl_transaksi }}</td>
-						<td>{{ $trx->total_bayar }}</td>
+						<td>Rp. {{ $trx->total_bayar }}</td>
 						<td>{{ $trx->nama_pembeli }}</td>
 						<td>{{ $trx->no_invoice }}</td>
 						<td>

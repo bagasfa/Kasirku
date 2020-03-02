@@ -35,7 +35,12 @@
 	<ul>
 		<li><a href=""><i class="fa fa-user" style="color: black;"></i>&nbsp; <span style="color: black;">Hai, {{auth()->user()->username}}</span></a>
 		<ul>
+			@if(auth()->user()->status == 1)
 			<li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+			@elseif(auth()->user()->status == 2)
+			<li><a href="/setting"><i class="fa fa-laugh-beam"></i> Profile</a></li>
+			<li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+			@endif
 		</ul>
 		</li>
 	</ul>

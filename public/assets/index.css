@@ -124,6 +124,9 @@ body{
 	margin-top:58px;
 	float: right;
 }
+.content_pdf{
+	width: 100%;
+}
 .padding{
 	padding:20px;
 }
@@ -164,6 +167,30 @@ body{
 }
 .btnblue:hover{
 	background: #5bc0de
+}
+.btnred{
+	background: #ff3333;
+	padding: 8px 12px;
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	border-radius: 3px;
+	font-size: 13px;
+}
+.btnred:hover{
+	background: #ff5252;
+}
+.btngreen{
+	background: #06a800;
+	padding: 8px 12px;
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	border-radius: 3px;
+	font-size: 13px;
+}
+.btngreen:hover{
+	background: #41b83d;
 }
 .contenttop .left{
 	float: left;
