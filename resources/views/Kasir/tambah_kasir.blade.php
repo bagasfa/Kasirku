@@ -12,7 +12,17 @@
 				<h3 class="jdl">Tambah Kasir</h3>
 				<form class="form-input" method="POST" action="{{url('kasir')}}" enctype="multipart/form-data">
 					{{csrf_field()}}
-					<input type="text" name="nama_kasir" placeholder="Nama Kasir" required="required">
+					<input type="text" name="username" placeholder="Username" required="required">
+
+					<input type="password" name="password" placeholder="Password" required="required" minlength="6">
+
+					<select name="status" required="">
+						<option>- Pilih Role -</option>
+						<option value="1"> Admin</option>
+						<option value="2"> Kasir</option>
+					</select>
+
+					<input type="text" name="nama_user" placeholder="Nama User" required="required">
 
 					<input type="text" name="telp" placeholder="No. Telpon" required="required" maxlength="12">
 

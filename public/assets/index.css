@@ -119,6 +119,33 @@ body{
 	border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 	margin-bottom: 10px;
 }
+.profile-pic {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    vertical-align: middle;
+    text-align: center;
+    color: transparent;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+.profile-pic:hover {
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+.profile-pic span {
+    display: inline-block;
+    padding-top: 4.5em;
+    padding-bottom: 4.5em;
+}
 .content{
 	width: 80%;
 	margin-top:58px;
@@ -159,7 +186,7 @@ body{
 .btnblue{
 	background: #41b3f9;
 	padding: 8px 12px;
-	color: #fff;
+	color: #fff !important;
 	text-decoration: none;
 	display: inline-block;
 	border-radius: 3px;
@@ -413,4 +440,70 @@ ul.pagination li.disabled {
     padding: 8px 8px;
     border: 1px solid #ddd;
     margin: 4px;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden !important;
+}
+.custom-file-input::before {
+  content: 'Select some files';
+  display: none;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+.layer{
+	background: rgba(255,255,255,0.3);
+	margin-left: 200px;
+	margin-right: 200px;
+	margin-bottom: 30px;
+	padding: 60px;
+	border-radius: 10px;
+}
+.form__label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  margin-left: 2rem;
+  margin-top: 0.7rem;
+  display: block;
+  color: white;
+  transition: all 0.3s;
+  transform: translateY(0rem);
+}
+
+.form__input {
+  font-family: 'Roboto', sans-serif;
+  color: black;
+  text-align: center;
+  font-size: 1.3rem;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255,0.6);
+  border: none;
+  width: 70%;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-4rem);
+  transform: translateY(-4rem);
 }

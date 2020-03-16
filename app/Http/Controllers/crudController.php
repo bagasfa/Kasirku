@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\File;
 use App\barang;
 use App\Transaksi;
 use App\kategori;
-use App\kasir;
+use App\User;
 use DB;
 
 class crudController extends Controller
@@ -78,47 +78,55 @@ class crudController extends Controller
     }
 
     public function tambah_kasir(){
-        $kasir = kasir::all();
+        $kasir = User::all();
         return view('Kasir.tambah_kasir')->with('cs',$kasir);
     }
 
     public function storeKasir(Request $request){
         request()->validate([
-            'nama_kasir' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'status' => 'required',
+            'nama_user' => 'required',
             'telp' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048'        
         ]);
-        $foto = $request->file('foto');
-        $extension = $foto->getClientOriginalExtension();
-        Storage::disk('public')->put($foto->getFilename().'.'.$extension,  File::get($foto));
+        $photoName = 'kasir-'.date('Ymdhis').'.'.$request->foto->getClientOriginalExtension();
+        $request->foto->move('Assets/images', $photoName);
 
-        $kasir = new kasir;
-        $kasir->nama_kasir = $request->nama_kasir;
+        $kasir = new User;
+        $kasir->username = $request->username;
+        $kasir->password = md5($request->password);
+        $kasir->status = $request->status;
+        $kasir->nama_user = $request->nama_user;
         $kasir->telp = $request->telp;
-        $kasir->foto = $foto->getFilename().'.'.$extension;
+        $kasir->foto = $photoName;
         $kasir->save();
-        return redirect('/kasir');
+        return redirect('/kasir')->with('message', 'Data berhasil Ditambahkan!');
     }
 
-    public function deleteKasir($id_kasir){
-        $gambar = kasir::where('id_kasir', $id_kasir)->first();
+    public function deleteKasir($id){
+        $gambar = User::where('id', $id)->first();
         File::delete('assets/images/'.$gambar->foto);
-        $kasir = kasir::findOrFail($id_kasir);
+        $kasir = User::findOrFail($id);
         $kasir->delete();
         return redirect('/kasir');
     }
 
-    public function editKasir($id_kasir)
+    public function editKasir($id)
     {
-        $kasir = kasir::find($id_kasir);
+        $kasir = User::find($id);
         
         return view('Kasir.edit_kasir', compact('kasir'));
     }
 
-    public function updateKasir($id_kasir, Request $request)
+    public function updateKasir($id, Request $request)
     {
-        $kasir = kasir::find($id_kasir);
-        $kasir->nama_kasir = $request->nama_kasir;
+        $kasir = User::find($id);
+        $kasir->username = $request->username;
+        $kasir->password = md5($request->password);
+        $kasir->status = $request->status;
+        $kasir->nama_user = $request->nama_user;
         $kasir->telp = $request->telp;
         if( $request->foto){
             $photoName = 'kasir-'.date('Ymdhis').'.'.$request->foto->getClientOriginalExtension();
@@ -130,18 +138,23 @@ class crudController extends Controller
         return redirect('/kasir');
     }
 
-    public function tambah_transaksi(){
-        $barang = barang::all();
-        return view('Transaksi.transaksi_baru', compact('barang'));
+    public function profile($id){
+        $profile = User::find($id);
+        return view('Kasir.profile',compact('profile'));
     }
 
-    public function storeTransaksi(Request $request){
-        $barang = new barang;
-        $barang->nama_barang = $request->nama_barang;
-        $barang->id_kategori = $request->id_kategori;
-        $barang->stok = $request->stok;
-        $barang->harga_jual = $request->harga_jual;
-        $barang->save();
-        return redirect('/menu');
+    public function updateProfile($id, Request $request){
+        $kasir = User::find($id);
+        $kasir->username = $request->username;
+        $kasir->nama_user = $request->nama_user;
+        $kasir->telp = $request->telp;
+        if( $request->foto){
+            $photoName = 'kasir-'.date('Ymdhis').'.'.$request->foto->getClientOriginalExtension();
+            $request->foto->move('Assets/images', $photoName);
+            $kasir->foto = $photoName;
+        }
+        $kasir->save();
+        
+        return redirect('/dashboard')->with('message','Data berhasil diperbarui!');
     }
 }

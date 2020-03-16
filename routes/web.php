@@ -11,12 +11,13 @@
 |
 */
 // Homepage
-Route::get('/', 'AuthController@login')->name('login');
-Route::get('/stisla', function () {
-    return view('stisla.index');
-});
+Route::get('/','LandingController@home');
+Route::get('/lMenu','LandingController@menu');
+Route::get('/lContact','LandingController@contact');
+Route::get('/lAbout','LandingController@about');
 
 //Authentication
+Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/postLogin','AuthController@postLogin');
 Route::post('/register','AuthController@register');
 Route::get('/logout','AuthController@logout');
@@ -25,6 +26,8 @@ Route::group(['middleware' => ['auth','checkStatus:1']], function(){
 	// Export Data
 	Route::get('/menu/menu_ex','pagesController@menuExcel');
 	Route::get('/menu/menu_pdf','pagesController@menuPdf');
+	Route::get('/laporan/laporan_ex','transaksiController@transExcel');
+	Route::get('/laporan/laporan_pdf','transaksiController@transPdf');
 
 	// Show Data
 	Route::get('/menu','pagesController@menu');
@@ -51,10 +54,27 @@ Route::group(['middleware' => ['auth','checkStatus:1']], function(){
 	Route::get('/kasir/{kasir}/deleteKasir', 'crudController@deleteKasir');
 	Route::get('/kasir/{kasir}/editKasir','crudController@editKasir');
 	Route::post('/kasir/{kasir}/updateKasir','crudController@updateKasir');
+
+	// ReDel Laporan
+	Route::get('/laporan','pagesController@laporan');
+	Route::get('/deleteLaporan','crudController@deleteLaporan');
 });
 
 Route::group(['middleware' => ['auth','checkStatus:1,2']], function(){
 	Route::get('/dashboard','pagesController@dashboard');
+
+	// Temporary Transaksi
+	Route::post('/add_transaksi','transaksiController@add_transaksi');
+	Route::get('/deleteTempo','transaksiController@deleteTempo');
+
+	// Transaksi
 	Route::get('/transaksi','pagesController@transaksi');
+	Route::get('/transaksi_baru','transaksiController@transaksiBaru');
+	Route::get('/transaksi/{id_transaksi}/detilTransaksi','pagesController@detilTransaksi');
+
+	// Edit Profile
+	Route::get('/profile/{id}','crudController@profile');
+	Route::post('/profile/{id}/updateProfile','crudController@updateProfile');
+	
 });
 ?>

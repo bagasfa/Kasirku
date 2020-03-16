@@ -17,6 +17,12 @@ class CreateTableKategori extends Migration
             $table->Increments('id_kategori');
             $table->string('nama_kategori');
         });
+
+        Schema::table('barang',fucntion ($table){
+            $table->foreign('id_kategori')->references('id_kategori')->on('kategori')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+        });
     }
 
     /**

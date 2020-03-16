@@ -5,7 +5,6 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-use App\kasir;
 use App\User;
 use DB;
 
@@ -20,26 +19,22 @@ class AuthController extends Controller
             'username' => 'required',
             'password' => 'required',
             'status' => 'required',
-            'nama_kasir' => 'required',
+            'nama_user' => 'required',
             'telp' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048'        
         ]);
-        $foto = $request->file('foto');
-        $extension = $foto->getClientOriginalExtension();
-        Storage::disk('public')->put($foto->getFilename().'.'.$extension,  File::get($foto));
+        $photoName = 'kasir-'.date('Ymdhis').'.'.$request->foto->getClientOriginalExtension();
+        $request->foto->move('Assets/images', $photoName);
 
-        $user = new User;
-        $user->username = $request->username;
-        $user->password = bcrypt($request->password);
-        $user->status = $request->status;
-        $user->save();
-
-        $kasir = new kasir;
-        $kasir->nama_kasir = $request->nama_kasir;
+        $kasir = new User;
+        $kasir->username = $request->username;
+        $kasir->password = md5($request->password);
+        $kasir->status = $request->status;
+        $kasir->nama_user = $request->nama_user;
         $kasir->telp = $request->telp;
-        $kasir->foto = $foto->getFilename().'.'.$extension;
+        $kasir->foto = $photoName;
         $kasir->save();
-        return redirect('/')->with('message', 'Registrasi berhasil!');
+        return redirect('/login')->with('message', 'Registrasi berhasil!');
     }
 
     public function postLogin(Request $request){
@@ -47,7 +42,7 @@ class AuthController extends Controller
     		return redirect('/dashboard');
     	}
     	// Message salah
-    	return redirect('/');
+    	return redirect('/login')->with('message', 'Username atau Password anda Salah!');
     }
 
     public function logout(){

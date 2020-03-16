@@ -11,11 +11,15 @@
 		<div class="bgwhite">
 			<div class="padding">
 				<h3 class="jdl">Edit Kasir</h3>
-				<form class="form-input" method="POST" action="{{url('/kasir/' .$kasir->id_kasir. '/updateKasir')}}" enctype="multipart/form-data">
+				<form class="form-input" method="POST" action="{{url('/kasir/' .$kasir->id. '/updateKasir')}}" enctype="multipart/form-data">
 					{{csrf_field()}}
 					{{$kasir->id_kasir}}
 					<input type="hidden" name="id" value="{{$kasir->id_kasir}}">
-					<input type="text" name="nama_kasir" placeholder="Nama Kasir" required="required" value="{{$kasir->nama_kasir}}">
+					<input type="text" name="username" placeholder="Username" required="required" value="{{$kasir->username}}">
+					<span style="color: red;">* </span><span style="font-size: 14px;">Encrypted with md5</span>
+					<input type="text" name="password" placeholder="Password" value="{{$kasir->password}}">
+					<input type="hidden" name="status" value="{{$kasir->status}}">
+					<input type="text" name="nama_user" placeholder="Nama Kasir" required="required" value="{{$kasir->nama_user}}">
 					<input type="text" name="telp" placeholder="No. Telpon" required="required" maxlength="12" value="{{$kasir->telp}}">
 					
 					&nbsp;

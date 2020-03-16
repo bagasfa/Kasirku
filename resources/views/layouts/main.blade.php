@@ -15,30 +15,31 @@
 	<center><h3>KOPI SAWAH</h3></center>
 	<ul>
 		<li class="admin-info">
-			<img src="{{asset('assets/logo.jpg')}}">
+			<img src="{{url('assets/images',auth()->user()->foto)}}">
 		</li>
 		<!-- Admin -->
 		@if(auth()->user()->status == 1)
-		<li><a id="dash" href="dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
-		<li><a id="barang" href="menu"><i class="fa fa-bars"></i> Menu</a></li>
-		<li><a id="kategori" href="kategori"><i class="fa fa-tags"></i> Kategori Menu</a></li>
-		<li><a id="kasir" href="kasir"><i class="fa fa-user"></i> Kasir</a></li>
+		<li><a id="dash" href="/dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
+		<li><a id="barang" href="/menu"><i class="fa fa-bars"></i> Menu</a></li>
+		<li><a id="kategori" href="/kategori"><i class="fa fa-tags"></i> Kategori Menu</a></li>
+		<li><a id="kasir" href="/kasir"><i class="fa fa-user"></i> Kasir</a></li>
+		<li><a id="laporan" href="/laporan"><i class="fa fa-book"></i> Laporan Penjualan</a></li>
 
 		<!-- Kasir -->
 		@elseif(auth()->user()->status == 2)
-		<li><a id="dash" href="dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
+		<li><a id="dash" href="/dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
 		<li><a id="transaksi" href="/transaksi"><i class="fa fa-money"></i> Transaksi</a></li>
 		@endif
 	</ul>
 </div>
 <div class="nav" style="background: #edf1f5;">
 	<ul>
-		<li><a href=""><i class="fa fa-user" style="color: black;"></i>&nbsp; <span style="color: black;">Hai, {{auth()->user()->username}}</span></a>
+		<li><a href=""><i class="fa fa-male" style="color: black;"></i>&nbsp; <span style="color: black;">Hai, {{auth()->user()->nama_user}}</span></a>
 		<ul>
 			@if(auth()->user()->status == 1)
 			<li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
 			@elseif(auth()->user()->status == 2)
-			<li><a href="/setting"><i class="fa fa-laugh-beam"></i> Profile</a></li>
+			<li><a href="/profile/{{auth()->user()->id}}"><i class="fa fa-user"></i> Profile</a></li>
 			<li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
 			@endif
 		</ul>

@@ -14,8 +14,11 @@ class CreateTableTempo extends Migration
     public function up()
     {
         Schema::create('table_tempo', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->bigIncrements('id_subtransaksi',11);
+            $table->integer('id_barang',11);
+            $table->integer('jumlah_beli',11);
+            $table->string('total_harga',20);
+            $table->string('trx',10);
         });
     }
 

@@ -22,7 +22,7 @@
 				</div>
 				<div class="both"></div>
 			</div>
-			<span class="label">Jumlah Transaksi : {{ \DB::table('transaksi')->count()}}</span>
+			<span class="label">Jumlah Transaksi : {{ $transaksi->count()}}</span>
 			<table class="datatable order-table">
 				<thead>
 				<tr>

@@ -20,7 +20,7 @@
 		}
 	</style>
 </head>
-<body align="center" style="background-image: url(assets/bgr.jpg); background-size: 100%">
+<body align="center" style="background-image: url(assets/bgr.jpg); background-size: 120%;">
 		<div class="login" style="background: rgba(255,255,255,0.85);">
 			<div class="padding" style="border: 2px solid black; border-radius: 10px;">
 				<div id="clock" align="center"></div>
@@ -107,8 +107,8 @@
 				    <input name="status" type="hidden" value="2">
 				</div>
 				<div class="form-group">
-				    <label for="inputNama">Nama Kasir <i style="color: red;">*</i></label>
-				    <input name="nama_kasir" type="text" class="form-control" id="inputNama" placeholder="Nama Kasir" required="">
+				    <label for="inputNama">Nama Lengkap <i style="color: red;">*</i></label>
+				    <input name="nama_user" type="text" class="form-control" id="inputNama" placeholder="Nama Lengkap" required="">
 				</div>
 				<div class="form-group">
 				    <label for="inputTelp">No. Telpon <i style="color: red;">*</i></label>

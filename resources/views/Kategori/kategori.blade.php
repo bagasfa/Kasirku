@@ -29,7 +29,7 @@
     			</div>
 				<div class="both"></div>
 			</div>
-			<span class="label">Jumlah Kategori : {{ \DB::table('kategori')->count()}}</span>
+			<span class="label">Jumlah Kategori : {{ \App\kategori::count()}}</span>
 			<table class="datatable" style="width: 500px;">
 				<thead>
 				<tr>

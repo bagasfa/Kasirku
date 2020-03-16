@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Transaksi extends Model
 {
@@ -12,4 +13,9 @@ class Transaksi extends Model
 
     protected $fillable = [
     	'kode_kasir','total_bayar','no_invoice','nama_pembeli'];
+
+    public function user()
+    {
+    	return $this->belongsTo('App\User', 'kode_kasir','id');
+    }
 }

@@ -5,13 +5,19 @@
 	document.title="Dashboard Kopi Sawah";
 	document.getElementById('dash').classList.add('active');
 </script>
-<div class="content" style="background-image: url('assets/bgr.jpg'); background-repeat: no-repeat; background-size: 100%;">
+<div class="content" style="background-image: url('assets/bgr.jpg'); background-repeat: no-repeat; background-size: 120%;">
 	<div class="padding" style="text-align: center; height: 800px; color: white;">
 		<br><br>
 		<hr>
 		<marquee><h1>SELAMAT DATANG DI KOPI SAWAH, TEMPAT DIMANA KITA BEBAS BERSANTAI</h1></marquee>
 		<hr>
-		<br><br>
+		<br>
+		@if(Session::has('message'))
+		<div style="font-size: 24pt; color: #3cff00;">
+			{{Session::get('message')}}
+		</div> 
+		@endif
+		<br>
 		<center><h1 style="font-family: beyond_the_mountainsregular; font-size: 100px; padding-top: 150px; text-shadow: 4px 6px black;">K O P I  &nbsp; S A W A H</h1></center>
 		<br>
 		<div style="font-size: 25px; text-shadow: 3px 3px black; border: 3px solid white; margin: 0px 400px; border-radius: 5px;">

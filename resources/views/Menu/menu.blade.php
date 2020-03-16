@@ -54,7 +54,7 @@
 
 				<div class="both"></div>
 			</div>
-			<span class="label">Jumlah Menu : {{ \DB::table('barang')->count()}}</span>
+			<span class="label">Jumlah Menu : {{ \App\barang::count()}}</span>
 			<table class="datatable order-table" id="datatable">
 				<thead>
 				<tr>

@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\kasir;
+use App\Transaksi;
 
 class User extends Authenticatable
 {
@@ -19,13 +19,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'password', 'status'
+        'username', 'password', 'status', 'nama_user', 'telp', 'foto'
     ];
 
-    public function kasir()
-    {
-        return $this->belongsTo(kasir::class, 'id_kasir');
-    }
 
     /**
      * The attributes that should be hidden for arrays.
