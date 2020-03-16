@@ -9,8 +9,6 @@
 
 ## Catatan
 
-- Untuk edit Images masih terkendala, tetapi insert dan delete sudah berjalan normal
-
 
 ## License
 
