@@ -14,20 +14,14 @@ class CreateTableUser extends Migration
     public function up()
     {
         Schema::create('user', function (Blueprint $table) {
-            $table->Increments('id', 11);
+            $table->increments('id');
             $table->string('username', 100);
             $table->string('password');
-            $table->integer('status', 11);
+            $table->integer('status');
             $table->string('nama_user', 100);
-            $table->string('telp'12);
-            $table->string('foto', 200);
-            $table->time_stamp('date_created');
-        });
-
-        Schema::table('transaksi',fucntion ($table){
-            $table->foreign('kode_kasir')->references('id')->on('user')
-                    ->onDelete('cascade')
-                    ->onUpdate('cascade');
+            $table->string('telp', 12);
+            $table->string('foto', 200)->nullable();
+            $table->date('date_created');
         });
     }
 

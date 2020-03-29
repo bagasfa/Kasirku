@@ -13,12 +13,16 @@ class CreateTableTempo extends Migration
      */
     public function up()
     {
-        Schema::create('table_tempo', function (Blueprint $table) {
-            $table->bigIncrements('id_subtransaksi',11);
-            $table->integer('id_barang',11);
-            $table->integer('jumlah_beli',11);
+        Schema::create('tempo', function (Blueprint $table) {
+            $table->increments('id_subtransaksi');
+            $table->integer('id_barang')->unsigned();
+            $table->integer('jumlah_beli');
             $table->string('total_harga',20);
             $table->string('trx',10);
+
+            $table->foreign('id_barang')->references('id_barang')->on('barang')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
         });
     }
 

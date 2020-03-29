@@ -12,7 +12,7 @@ class Transaksi extends Model
     protected $primaryKey = 'id_transaksi';
 
     protected $fillable = [
-    	'kode_kasir','total_bayar','no_invoice','nama_pembeli'];
+    	'kode_kasir','tgl_transaksi','total_bayar','no_invoice','nama_pembeli'];
 
     public function user()
     {

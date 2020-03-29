@@ -33,6 +33,7 @@ class AuthController extends Controller
         $kasir->nama_user = $request->nama_user;
         $kasir->telp = $request->telp;
         $kasir->foto = $photoName;
+        $kasir->date_created = now();
         $kasir->save();
         return redirect('/login')->with('message', 'Registrasi berhasil!');
     }

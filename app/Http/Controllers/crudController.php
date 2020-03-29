@@ -24,6 +24,7 @@ class crudController extends Controller
     	$barang->id_kategori = $request->id_kategori;
     	$barang->stok = $request->stok;
     	$barang->harga_jual = $request->harga_jual;
+        $barang->date_added = now();
     	$barang->save();
     	return redirect('/menu');
     }
@@ -47,6 +48,7 @@ class crudController extends Controller
         $barang->id_kategori = $request->id_kategori;
         $barang->stok = $request->stok;
         $barang->harga_jual = $request->harga_jual;
+        $barang->date_added = now();
         $barang->save();
         return redirect('/menu');
     }
@@ -101,6 +103,7 @@ class crudController extends Controller
         $kasir->nama_user = $request->nama_user;
         $kasir->telp = $request->telp;
         $kasir->foto = $photoName;
+        $kasir->date_created = now();
         $kasir->save();
         return redirect('/kasir')->with('message', 'Data berhasil Ditambahkan!');
     }
@@ -128,6 +131,7 @@ class crudController extends Controller
         $kasir->status = $request->status;
         $kasir->nama_user = $request->nama_user;
         $kasir->telp = $request->telp;
+        $kasir->date_created = now();
         if( $request->foto){
             $photoName = 'kasir-'.date('Ymdhis').'.'.$request->foto->getClientOriginalExtension();
             $request->foto->move('Assets/images', $photoName);
@@ -148,6 +152,7 @@ class crudController extends Controller
         $kasir->username = $request->username;
         $kasir->nama_user = $request->nama_user;
         $kasir->telp = $request->telp;
+        $kasir->date_created = now();
         if( $request->foto){
             $photoName = 'kasir-'.date('Ymdhis').'.'.$request->foto->getClientOriginalExtension();
             $request->foto->move('Assets/images', $photoName);

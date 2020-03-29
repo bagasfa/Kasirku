@@ -20,19 +20,12 @@ class CreateTableBarang extends Migration
             $table->integer('stok');
             $table->string('harga_jual');
             $table->date('date_added');
-        });
 
-        Schema::table('sub_transaksi',fucntion ($table){
-            $table->foreign('id_barang')->references('id_barang')->on('barang')
+            $table->foreign('id_kategori')->references('id_kategori')->on('kategori')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
         });
 
-        Schema::table('tempo',fucntion ($table){
-            $table->foreign('id_barang')->references('id_barang')->on('barang')
-                    ->onDelete('cascade')
-                    ->onUpdate('cascade');
-        });
     }
 
     /**

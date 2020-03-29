@@ -14,12 +14,20 @@ class CreateTableSubTransaksi extends Migration
     public function up()
     {
         Schema::create('sub_transaksi', function (Blueprint $table) {
-            $table->Increments('id_subtransaksi',11);
-            $table->integer('id_barang',11);
-            $table->integer('id_transaksi',11);
-            $table->integer('jumlah_beli',11);
+            $table->increments('id_subtransaksi');
+            $table->integer('id_barang')->unsigned();
+            $table->integer('id_transaksi')->unsigned();
+            $table->integer('jumlah_beli');
             $table->string('total_harga',20);
             $table->string('no_invoice',20);
+
+            $table->foreign('id_barang')->references('id_barang')->on('barang')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+
+            $table->foreign('id_transaksi')->references('id_transaksi')->on('transaksi')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
